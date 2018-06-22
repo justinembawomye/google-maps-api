@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Google maps api</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <h1>Google Maps Api</h1>
+
+    <div id="map"></div>
+
+    <script>
+        function initMap() {
+
+            // map options
+            var options = {
+                zoom: 8,
+                center: { lat: -0.3476, lng: 32.5825 }
+            }
+
+            //  New map
+            var map = new google.maps.Map(document.getElementById('map'), options);
+
+            // add marker
+            var marker = new google.maps.Marker({
+                position: { lat: -0.0512, lng: 32.4637 },
+                map: map,
+                icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
+
+            });
+
+            var infoWindow = new google.maps.infoWindow({
+                content:'<h1>Entebbe</h1>'
+            });
+
+            marker.addListener('click', function () {
+                infoWindow.open(map, marker);
+            });
+
+        }
+
+
+    </script>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpKGdZdke0NHFrAF5RNqBkzesp9bzyR3o&callback=initMap">
+    </script>
+</body>
+
+</html>
